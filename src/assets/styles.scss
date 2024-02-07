@@ -23,5 +23,15 @@ a {
 body {
   line-height: 1;
   font-family: 'Roboto', sans-serif;
-  background-color: #2d3142;
+  background-image: url('/background.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+#app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 35px;
 }
