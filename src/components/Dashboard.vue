@@ -34,6 +34,8 @@ export default {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
+    max-width: 1500px;
+    overflow: auto;
   }
   .widgets-container {
     flex-grow: 1;
@@ -44,8 +46,8 @@ export default {
     flex-direction: column;
     gap: 30px;
     padding: 35px;
-
     flex-wrap: wrap;
+    overflow: auto;
   }
 
   @media (min-width: 576px) and (max-width: 991px) {
