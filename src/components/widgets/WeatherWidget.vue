@@ -1,13 +1,15 @@
 <template>
   <div class="weather-container" :style="{ backgroundImage: `url(/${backgroundImage})` }">
-    <h2>Weather Information</h2>
-    <p>Location: Berlin</p>
-    <p>Current Time: {{ weather?.current.time }}</p>
-    <p>Temperature: {{ weather?.current.temperature_2m }}{{ weather?.current_units.temperature_2m }}</p>
-    <p>Rain: {{ weather?.current.rain }}{{ weather?.current_units.rain }}</p>
-    <p>Cloud Cover: {{ weather?.current.cloud_cover }}{{ weather?.current_units.cloud_cover }}</p>
-    <p>Wind Speed: {{ weather?.current.wind_speed_10m }}{{ weather?.current_units.wind_speed_10m }}</p>
-    <p><strong>Wind Direction:</strong> {{ weather?.current.wind_direction_10m }}{{ weather?.current_units.wind_direction_10m }}</p>
+    <h2>Current Weather Information</h2>
+    <div v-if="weather">
+      <p>Location: Berlin</p>
+      <p>Current Time: {{ weather.current.time }}</p>
+      <p>Temperature: {{ weather.current.temperature_2m }}{{ weather.current_units.temperature_2m }}</p>
+      <p>Rain: {{ weather.current.rain }}{{ weather.current_units.rain }}</p>
+      <p>Cloud Cover: {{ weather.current.cloud_cover }}{{ weather.current_units.cloud_cover }}</p>
+      <p>Wind Speed: {{ weather.current.wind_speed_10m }}{{ weather.current_units.wind_speed_10m }}</p>
+      <p>Wind Direction: {{ weather.current.wind_direction_10m }}{{ weather.current_units.wind_direction_10m }}</p>
+    </div>
   </div>
 </template>
 
@@ -16,14 +18,11 @@ export default {
   data() {
     return {
       weather: null,
-      // loading: true, // TODO: overlay?
     };
   },
   async mounted() {
     try {
       this.weather = await this.fetchWeatherData();
-      // this.loading = false; // TODO: overlay?
-      console.log("weather", this.weather)
     } catch (error) {
       console.error(error);
     }
