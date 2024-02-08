@@ -2,22 +2,30 @@
   <div class="dashboard-container">
     <Sidebar />
     <div class="widgets-container">
-      <h1>Widgets</h1>
+      <WeatherWidget />
+      <DiscogsWidget />
+      <MixCloudWidget />
     </div>
   </div>
 </template>
 
 <script>
 import Sidebar from "../components/Sidebar.vue";
+import WeatherWidget from "../components/widgets/WeatherWidget.vue";
+import DiscogsWidget from "../components/widgets/DiscogsWidget.vue";
+import MixCloudWidget from "../components/widgets/MixCloudWidget.vue";
 
 export default {
   components: {
     Sidebar,
+    WeatherWidget,
+    DiscogsWidget,
+    MixCloudWidget,
   }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .dashboard-container {
     background-color: rgba(45, 49, 66, 0.95);
     width: 100%;
@@ -33,10 +41,24 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    padding: 35px;
+
+    flex-wrap: wrap;
+  }
+
+  @media (min-width: 576px) and (max-width: 991px) {
+    .widgets-container {
+      flex-direction: row;
+    }
   }
 
   @media (min-width: 992px) {
     .dashboard-container {
+      flex-direction: row;
+    }
+    .widgets-container {
       flex-direction: row;
     }
   }
