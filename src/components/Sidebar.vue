@@ -27,6 +27,7 @@ export default {
     align-items: center;
     flex-direction: row;
     gap: 30px;
+    padding: 35px;
   }
 
   @media (min-width: 576px) and (max-width: 991px) {
