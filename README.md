@@ -1,57 +1,26 @@
-# music-geek-dashboard
+# Music Geek Dashboard
 
-This template should help get you started developing with Vue 3 in Vite.
+Welcome to the 'Music Geek Dashboard' project! This dashboard is designed specifically for DJs, vinyl record collectors, and electronic music enthusiasts.
 
-## Recommended IDE Setup
+## Overview
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+The 'Music Geek Dashboard' comprises three widgets, each serving a unique purpose and fetching data from external APIs:
 
-## Customize configuration
+1. **Weather Widget**: Utilizes data from [Open Meteo API](https://open-meteo.com/) to display current weather information relevant to the user's location.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+2. **Discogs Widget**: Retrieves details about a selected vinyl record using the [Discogs API](https://www.discogs.com/developers/).
 
-## Project Setup
+3. **Mixcloud Widget**: Presents information and user comments about a DJ mix sourced from the [Mixcloud API](https://www.mixcloud.com/developers/), particularly focusing on mixes hosted on Resident Advisor.
 
-```sh
-npm install
-```
+## Technologies Used
 
-### Compile and Hot-Reload for Development
+- Vue.js: A progressive JavaScript framework for building user interfaces.
+- SCSS: A preprocessor scripting language that is interpreted or compiled into Cascading Style Sheets (CSS).
 
-```sh
-npm run dev
-```
+## Functionality
 
-### Compile and Minify for Production
+This project is purely frontend-oriented, with all API fetching and data manipulation handled client-side.
 
-```sh
-npm run build
-```
+## Purpose
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
-npm run test:e2e:dev
-```
-
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-npm run build
-npm run test:e2e
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+The Music Geek Dashboard was created as part of a job application assignment. It serves as a demonstration of frontend development skills, including API integration and data visualization within the Vue.js ecosystem.
