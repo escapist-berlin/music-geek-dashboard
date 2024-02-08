@@ -25,7 +25,7 @@ export default {
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
   }
   .widgets-container {
     flex-grow: 1;
@@ -35,9 +35,9 @@ export default {
     align-items: center;
   }
 
-  @media (max-width: 768px) {
+  @media (min-width: 992px) {
     .dashboard-container {
-      flex-direction: column;
+      flex-direction: row;
     }
   }
 </style>
