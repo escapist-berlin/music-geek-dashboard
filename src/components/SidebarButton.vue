@@ -29,12 +29,12 @@ export default {
   .sidebar-button:hover .sidebar-icon {
     color: rgba(214, 214, 214, 1);
   }
-  @media (min-width: 576px) and (max-width: 991px) {
+  @media (min-width: 768px) {
     .sidebar-icon {
       font-size: 21px;
     }
   }
-  @media (min-width: 992px) {
+  @media (min-width: 1024px) {
     .sidebar-icon {
       font-size: 24px;
     }

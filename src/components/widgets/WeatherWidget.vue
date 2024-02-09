@@ -59,7 +59,6 @@ export default {
 
 <style lang="scss" scoped>
   .weather-container {
-    flex-grow: 1;
     border: 5px solid lightseagreen;
     display: flex;
     justify-content: center;
@@ -70,14 +69,14 @@ export default {
     border-radius: 8px;
     background-size: cover;
   }
-  @media (min-width: 576px) and (max-width: 991px) {
+  @media (min-width: 768px) {
     .weather-container {
-      flex: 1 1 100%;
+      // flex: 1 1 100%;
     }
   }
-  @media (min-width: 992px) {
+  @media (min-width: 1024px) {
     .weather-container {
-      flex: 1 1 100%;
+      // flex: 1 1 100%;
     }
   }
 </style>

@@ -28,40 +28,38 @@ export default {
 <style lang="scss" scoped>
   .dashboard-container {
     background-color: rgba(45, 49, 66, 0.95);
-    width: 100%;
-    height: 100%;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    max-width: 1500px;
-    overflow: auto;
+    flex-grow: 1;
   }
   .widgets-container {
-    flex-grow: 1;
     border: 5px solid lightcoral;
     display: flex;
+    flex-direction: column;
+    flex-grow: 999;
+    gap: 30px;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    gap: 30px;
     padding: 35px;
-    flex-wrap: wrap;
-    overflow: auto;
   }
 
-  @media (min-width: 576px) and (max-width: 991px) {
+  @media (min-width: 768px) {
     .widgets-container {
-      flex-direction: row;
+
     }
   }
 
-  @media (min-width: 992px) {
+  @media (min-width: 1024px) {
     .dashboard-container {
       flex-direction: row;
     }
     .widgets-container {
+      flex-wrap: wrap;
       flex-direction: row;
+      height: 100vh;
+      overflow: auto;
     }
   }
 </style>

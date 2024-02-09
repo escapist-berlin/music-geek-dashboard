@@ -30,8 +30,10 @@ body {
 
 #app {
   display: flex;
+  margin: auto;
+  width: 100%;
+  max-width: 1500px;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   padding: 35px;
 }

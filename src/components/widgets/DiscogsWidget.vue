@@ -52,14 +52,16 @@ export default {
 
 <style lang="scss" scoped>
   .discogs-container {
-    flex-grow: 1;
     border: 5px solid lightsalmon;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
   }
-  @media (min-width: 576px) and (max-width: 991px) {
+  @media (min-width: 768px) {
+
+  }
+  @media (min-width: 1024px) {
 
   }
 </style>
