@@ -1,15 +1,25 @@
 <template>
-  <div class="discogs-container">
-    <h1>Check out this record:</h1>
-    <div v-if="release">
-      <a :href="release.uri"><img src="/release_cover.jpg" alt="Release Cover" style="width: 150px; height: 150px;"></a>
-      <p>{{ displayArtists }} - {{ release.title }}</p>
-      <p>Label: {{ displayLabels }}</p>
-      <p>Country: {{ release.country }}</p>
-      <p>Released: {{ release.released }}</p>
-      <p>Styles: {{ release.styles.join(', ') }}</p>
-      <p>Have: {{ release.community.have }} / Want: {{ release.community.want }} / {{ release.lowest_price }} €</p>
+  <div v-if="release" class="discogs-container">
+    <h1>Your next record to discover:</h1>
+    <div class="release-cover-infos">
+      <a :href="release.uri">
+        <img src="/release_cover.jpg" alt="Release Cover" style="width: 90px; height: 90px;">
+      </a>
+      <div>
+        <p>{{ displayArtists }} - {{ release.title }}</p>
+        <p>{{ displayLabels }}</p>
+        <p>{{ release.country }} - {{ release.released }}</p>
+        <p>{{ release.styles.join(', ') }}</p>
+      </div>
     </div>
+
+    <div class="release-tracklist">
+      <ul>
+        <li v-for="(formattedTrack, index) in formattedTracklist" :key="index">{{ formattedTrack }}</li>
+      </ul>
+    </div>
+
+    <p>Have: {{ release.community.have }} / Want: {{ release.community.want }} / {{ release.lowest_price }} €</p>
   </div>
 </template>
 
@@ -28,6 +38,12 @@ export default {
     displayLabels() {
       if (!this.release || !this.release.labels) return '';
       return this.release.labels.map(label => `${label.name} - ${label.catno}`).join(', ');
+    },
+    formattedTracklist() {
+      return this.release.tracklist.map(track => {
+        const formattedPosition = (parseInt(track.position.substring(1)) < 10) ? '0' + track.position.substring(1) : track.position.substring(1);
+        return `${formattedPosition}. ${track.title}`;
+      });
     }
   },
   async mounted() {
@@ -52,12 +68,25 @@ export default {
 
 <style lang="scss" scoped>
   .discogs-container {
-    border: 5px solid lightsalmon;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    gap: 10px;
     flex-direction: column;
+
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    height: 300px;
+    font-size: 15px;
+
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+    border: 1px solid #ccc;
+    color: #ccc;
+    .release-cover-infos {
+      display: flex;
+      gap: 10px;
+    }
   }
+
   @media (min-width: 768px) {
 
   }
