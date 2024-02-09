@@ -1,15 +1,14 @@
 <template>
-  <div class="weather-container" :style="{ backgroundImage: `url(/${backgroundImage})` }">
-    <h2>Current Weather Information</h2>
-    <div v-if="weather">
-      <p>Location: Berlin</p>
-      <p>Current Time: {{ weather.current.time }}</p>
-      <p>Temperature: {{ weather.current.temperature_2m }}{{ weather.current_units.temperature_2m }}</p>
-      <p>Rain: {{ weather.current.rain }}{{ weather.current_units.rain }}</p>
-      <p>Cloud Cover: {{ weather.current.cloud_cover }}{{ weather.current_units.cloud_cover }}</p>
-      <p>Wind Speed: {{ weather.current.wind_speed_10m }}{{ weather.current_units.wind_speed_10m }}</p>
-      <p>Wind Direction: {{ weather.current.wind_direction_10m }}{{ weather.current_units.wind_direction_10m }}</p>
+  <div v-if="weather" class="weather-container" :style="{ backgroundImage: `url(/${weatherData.image})` }">
+    <div class="overlay">
+      <h1>Berlin</h1>
+      <font-awesome-icon :icon="weatherData.icon" />
+      <p>{{ weather.current.temperature_2m }}{{ weather.current_units.temperature_2m }}</p>
+      <p>{{ cloudCoverDescription }}</p>
     </div>
+    <!-- <p>Rain: {{ weather.current.rain }}{{ weather.current_units.rain }}</p>
+    <p>Wind Speed: {{ weather.current.wind_speed_10m }}{{ weather.current_units.wind_speed_10m }}</p>
+    <p>Wind Direction: {{ weather.current.wind_direction_10m }}{{ weather.current_units.wind_direction_10m }}</p> -->
   </div>
 </template>
 
@@ -28,19 +27,42 @@ export default {
     }
   },
   computed: {
-    backgroundImage() {
-      if (!this.weather || !this.weather.current) return '';
+    weatherData() {
+      if (!this.weather || !this.weather.current) return {};
 
       const { cloud_cover, rain, wind_speed_10m } = this.weather.current;
 
+      const conditions = [
+        { condition: 'cloudy', image: 'cloudy.jpg', icon: 'fa-solid fa-cloud' },
+        { condition: 'rainy', image: 'rainy.jpg', icon: 'fa-solid fa-cloud-rain' },
+        { condition: 'windy', image: 'windy.jpg', icon: 'fa-solid fa-wind' },
+        { condition: 'clear', image: 'clear.jpg', icon: 'fa-solid fa-sun' }
+      ];
+
+      let selectedCondition = 'clear';
       if (cloud_cover > 50) {
-        return 'cloudy.jpg';
+        selectedCondition = 'cloudy';
       } else if (rain > 0) {
-        return 'rainy.jpg';
+        selectedCondition = 'rainy';
       } else if (wind_speed_10m > 15) {
-        return 'windy.jpg';
+        selectedCondition = 'windy';
+      }
+
+      return conditions.find(condition => condition.condition === selectedCondition);
+    },
+    cloudCoverDescription() {
+      const cloudCover = this.weather.current.cloud_cover;
+
+      if (cloudCover <= 20) {
+        return "Clear skies";
+      } else if (cloudCover <= 40) {
+        return "Few clouds";
+      } else if (cloudCover <= 60) {
+        return "Partly cloudy";
+      } else if (cloudCover <= 80) {
+        return "Mostly cloudy";
       } else {
-        return 'clear.jpg';
+        return "Overcast";
       }
     }
   },
@@ -59,24 +81,47 @@ export default {
 
 <style lang="scss" scoped>
   .weather-container {
-    border: 5px solid lightseagreen;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    position: relative;
 
     padding: 20px;
     border-radius: 8px;
     background-size: cover;
+
+    width: 300px;
+    height: 300px;
+    font-size: 25px;
+
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+    border: 1px solid #ccc;
+
+    svg {
+      font-size: 43px;
+    }
+    .overlay {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 10px;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      z-index: 1;
+    }
   }
   @media (min-width: 768px) {
     .weather-container {
-      // flex: 1 1 100%;
+
     }
   }
   @media (min-width: 1024px) {
     .weather-container {
-      // flex: 1 1 100%;
+
     }
   }
 </style>
