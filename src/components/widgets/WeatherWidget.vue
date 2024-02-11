@@ -84,7 +84,7 @@ export default {
     position: relative;
 
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 10px;
     background-size: cover;
 
     width: 300px;
@@ -110,9 +110,20 @@ export default {
       width: 100%;
       height: 100%;
       background-color: rgba(255, 255, 255, 0.2);
-      border-radius: 8px;
+      border-radius: 10px;
       z-index: 1;
     }
+  }
+  .weather-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom right, #E17F37, #391C86);
+    opacity: 0.5;
+    border-radius: 8px;
   }
   @media (min-width: 768px) {
     .weather-container {
