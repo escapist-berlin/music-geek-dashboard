@@ -22,15 +22,13 @@ export default {
   .sidebar-container {
     display: flex;
     flex-grow: 1;
-    gap: 30px;
+    gap: 40px;
     justify-content: center;
     align-items: center;
     padding: 35px;
   }
   @media (min-width: 768px) {
-    .sidebar-container {
-      gap: 50px;
-    }
+
   }
   @media (min-width: 1024px) {
     .sidebar-container {

@@ -24,15 +24,13 @@ export default {
   }
   .sidebar-icon {
     color: rgba(214, 214, 214, 0.6);
-    font-size: 18px;
+    font-size: 21px;
   }
   .sidebar-button:hover .sidebar-icon {
     color: rgba(214, 214, 214, 1);
   }
   @media (min-width: 768px) {
-    .sidebar-icon {
-      font-size: 21px;
-    }
+
   }
   @media (min-width: 1024px) {
     .sidebar-icon {
