@@ -1,6 +1,6 @@
 <template>
   <div v-if="release" class="discogs-container">
-    <h1>Your next record to discover:</h1>
+    <h1>NEXT RECORD TO DISCOVER</h1>
     <div class="release-cover-infos">
       <a :href="release.uri">
         <img src="/release_cover.jpg" alt="Release Cover" style="width: 90px; height: 90px;">
@@ -17,6 +17,7 @@
       <ul>
         <li v-for="(formattedTrack, index) in formattedTracklist" :key="index">{{ formattedTrack }}</li>
       </ul>
+      <font-awesome-icon icon="fa-solid fa-compact-disc" />
     </div>
 
     <p>Have: {{ release.community.have }} / Want: {{ release.community.want }} / {{ release.lowest_price }} €</p>
@@ -73,17 +74,46 @@ export default {
     flex-direction: column;
 
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 10px;
     width: 300px;
     height: 300px;
     font-size: 15px;
 
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
     border: 1px solid #ccc;
-    color: #ccc;
+    // color: #ccc;
+    color: black;
+
+    background-image: linear-gradient(to bottom right, #D26623, #AE66BF);
+
+    h1 {
+      margin: auto;
+      font-size: 19px;
+    }
     .release-cover-infos {
       display: flex;
       gap: 10px;
+    }
+
+    .release-tracklist {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+
+      svg {
+        margin: auto;
+        font-size: 65px;
+        animation: rotateAnimation 6s infinite linear;
+      }
+    }
+  }
+
+  @keyframes rotateAnimation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
     }
   }
 
