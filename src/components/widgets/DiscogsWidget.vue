@@ -83,9 +83,6 @@ export default {
 
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
     border: 1px solid #ccc;
-    // color: #ccc;
-    color: black;
-
     background-image: linear-gradient(to bottom right, #D26623, #AE66BF);
 
     h1 {
