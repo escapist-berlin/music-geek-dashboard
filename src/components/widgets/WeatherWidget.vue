@@ -2,7 +2,7 @@
   <div v-if="weather" class="weather-container" :style="{ backgroundImage: `url(/${weatherData.image})` }">
     <div class="overlay">
       <h1>Berlin</h1>
-      <font-awesome-icon :icon="weatherData.icon" />
+      <font-awesome-icon :icon="weatherData.icon" v-bind="weatherData.animation" style="--fa-animation-duration: 2s;" />
       <p>{{ weather.current.temperature_2m }}{{ weather.current_units.temperature_2m }}</p>
       <p>{{ cloudCoverDescription }}</p>
     </div>
@@ -33,10 +33,10 @@ export default {
       const { cloud_cover, rain, wind_speed_10m } = this.weather.current;
 
       const conditions = [
-        { condition: 'cloudy', image: 'cloudy.jpg', icon: 'fa-solid fa-cloud' },
-        { condition: 'rainy', image: 'rainy.jpg', icon: 'fa-solid fa-cloud-rain' },
-        { condition: 'windy', image: 'windy.jpg', icon: 'fa-solid fa-wind' },
-        { condition: 'clear', image: 'clear.jpg', icon: 'fa-solid fa-sun' }
+        { condition: 'cloudy', image: 'cloudy.jpg', icon: 'fa-solid fa-cloud', animation: { 'beat': true, 'fade': true } },
+        { condition: 'rainy', image: 'rainy.jpg', icon: 'fa-solid fa-cloud-rain', animation: { 'beat': true, 'fade': true } },
+        { condition: 'windy', image: 'windy.jpg', icon: 'fa-solid fa-wind', animation: { 'beat': true, 'fade': true } },
+        { condition: 'clear', image: 'clear.jpg', icon: 'fa-solid fa-sun', animation: { 'beat': true, 'fade': true } }
       ];
 
       let selectedCondition = 'clear';
