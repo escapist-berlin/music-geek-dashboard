@@ -1,6 +1,6 @@
 <template>
   <div v-if="show && comments" class="mixcloud-container">
-    <h1>{{ show.name }}</h1>
+    <h1>{{ show.name.toUpperCase() }}</h1>
     <div class="show-cover-infos">
       <div>
         <br>
@@ -17,10 +17,14 @@
     </div>
 
     <div class="show-comments">
-      <h2>Comments ({{ show.comment_count }}):</h2>
+      <h2>Comments ({{ show.comment_count }})</h2>
       <ul class="comment-list">
         <li v-for="(comment, index) in comments.data.slice(0, 3)" :key="index" class="comment-item">
-          <p class="comment-text">{{ comment.comment }}</p>
+          <img :src="comment.user.pictures.small" alt="Profile Picture" class="profile-picture">
+          <div class="comment-content">
+            <p class="comment-username">{{ comment.user.name }}</p>
+            <p class="comment-text">{{ comment.comment }}</p>
+          </div>
         </li>
       </ul>
     </div>
@@ -103,7 +107,38 @@ export default {
     }
 
     .show-comments {
-
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      .comment-list {
+        display: flex;
+        flex-direction: column;
+      }
+      .comment-item {
+        display: flex;
+        gap: 7px;
+        margin-bottom: 2px;
+        padding: 3px;
+      }
+      .profile-picture {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .comment-content {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 2px;
+        .comment-username {
+          font-weight: bold;
+        }
+        .comment-text {
+          font-size: small;
+        }
+      }
     }
   }
 
