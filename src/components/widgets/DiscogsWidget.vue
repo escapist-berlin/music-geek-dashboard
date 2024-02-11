@@ -41,8 +41,10 @@ export default {
       return this.release.labels.map(label => `${label.name} - ${label.catno}`).join(', ');
     },
     formattedTracklist() {
-      return this.release.tracklist.map(track => {
-        const formattedPosition = (parseInt(track.position.substring(1)) < 10) ? '0' + track.position.substring(1) : track.position.substring(1);
+      let positionCounter = 1;
+      return this.release.tracklist.map((track) => {
+        const formattedPosition = positionCounter < 10 ? `0${positionCounter}` : positionCounter;
+        positionCounter++;
         return `${formattedPosition}. ${track.title}`;
       });
     }
