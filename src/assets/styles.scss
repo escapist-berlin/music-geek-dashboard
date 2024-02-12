@@ -37,3 +37,9 @@ body {
   align-items: center;
   padding: 35px;
 }
+
+@media (min-width: 1024px) {
+  #app {
+    height: 100vh;
+  }
+}

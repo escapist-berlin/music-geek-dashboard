@@ -77,11 +77,11 @@ export default {
   @media (min-width: 1024px) {
     .dashboard-container {
       flex-direction: row;
+      height: 100%;
     }
     .widgets-container {
       flex-wrap: wrap;
       flex-direction: row;
-      height: 100vh;
       overflow: auto;
     }
   }
