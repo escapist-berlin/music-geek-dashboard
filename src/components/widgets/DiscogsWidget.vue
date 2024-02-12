@@ -76,20 +76,20 @@ export default {
   .v-enter-active {
     transition: opacity 2s ease;
   }
+
   .v-enter-from {
     opacity: 0;
   }
+
   .discogs-container {
     display: flex;
-    gap: 10px;
     flex-direction: column;
-
+    gap: 10px;
     padding: 20px;
     border-radius: 10px;
     width: 300px;
     height: 300px;
     font-size: 15px;
-
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
     border: 1px solid #ccc;
     background-image: linear-gradient(to bottom right, #D26623, #AE66BF);
@@ -98,6 +98,7 @@ export default {
       margin: auto;
       font-size: 19px;
     }
+
     .release-cover-infos {
       display: flex;
       gap: 10px;
@@ -123,14 +124,5 @@ export default {
     to {
       transform: rotate(360deg);
     }
-  }
-
-  @media (min-width: 768px) {
-    .discogs-container {
-      // flex-basis: 50%;
-    }
-  }
-  @media (min-width: 1024px) {
-
   }
 </style>

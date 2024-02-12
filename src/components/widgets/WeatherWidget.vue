@@ -7,9 +7,6 @@
         <p>{{ weather.current.temperature_2m }}{{ weather.current_units.temperature_2m }}</p>
         <p>{{ cloudCoverDescription }}</p>
       </div>
-      <!-- <p>Rain: {{ weather.current.rain }}{{ weather.current_units.rain }}</p>
-      <p>Wind Speed: {{ weather.current.wind_speed_10m }}{{ weather.current_units.wind_speed_10m }}</p>
-      <p>Wind Direction: {{ weather.current.wind_direction_10m }}{{ weather.current_units.wind_direction_10m }}</p> -->
     </div>
   </Transition>
 </template>
@@ -86,33 +83,32 @@ export default {
   .v-enter-active {
     transition: opacity 2s ease;
   }
+
   .v-enter-from {
     opacity: 0;
   }
+
   .weather-container {
     position: relative;
-
     padding: 20px;
     border-radius: 10px;
     background-size: cover;
-
     width: 300px;
     height: 300px;
     font-size: 25px;
-
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
     border: 1px solid #ccc;
 
     svg {
       font-size: 43px;
     }
+
     .overlay {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
       gap: 10px;
-
       position: absolute;
       top: 0;
       left: 0;
@@ -123,6 +119,7 @@ export default {
       z-index: 1;
     }
   }
+
   .weather-container::before {
     content: "";
     position: absolute;
@@ -133,13 +130,5 @@ export default {
     background: linear-gradient(to bottom right, #E17F37, #391C86);
     opacity: 0.5;
     border-radius: 8px;
-  }
-  @media (min-width: 768px) {
-    .weather-container {
-
-    }
-  }
-  @media (min-width: 1024px) {
-
   }
 </style>

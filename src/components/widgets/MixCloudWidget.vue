@@ -86,20 +86,19 @@ export default {
   .v-enter-active {
     transition: opacity 2s ease;
   }
+
   .v-enter-from {
     opacity: 0;
   }
   .mixcloud-container {
     display: flex;
-    gap: 10px;
     flex-direction: column;
-
+    gap: 10px;
     padding: 20px;
     border-radius: 10px;
     width: 300px;
     height: 300px;
     font-size: 15px;
-
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
     border: 1px solid #ccc;
     background-image: linear-gradient(to bottom right, #AE66BF, #267FBF);
@@ -119,42 +118,41 @@ export default {
       display: flex;
       flex-direction: column;
       gap: 7px;
+
       .comment-list {
         display: flex;
         flex-direction: column;
       }
+
       .comment-item {
         display: flex;
         gap: 7px;
         margin-bottom: 2px;
         padding: 3px;
-      }
-      .profile-picture {
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .comment-content {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 2px;
-        .comment-username {
-          font-weight: bold;
+
+        .profile-picture {
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
-        .comment-text {
-          font-size: small;
+
+        .comment-content {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 2px;
+
+          .comment-username {
+            font-weight: bold;
+          }
+
+          .comment-text {
+            font-size: small;
+          }
         }
       }
     }
-  }
-
-  @media (min-width: 768px) {
-
-  }
-  @media (min-width: 1024px) {
-
   }
 </style>

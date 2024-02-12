@@ -22,16 +22,16 @@ export default {
     background-color: transparent;
     cursor: pointer;
   }
+
   .sidebar-icon {
-    color: rgba(214, 214, 214, 0.6);
     font-size: 21px;
+    color: rgba(214, 214, 214, 0.6);
   }
+
   .sidebar-button:hover .sidebar-icon {
     color: rgba(214, 214, 214, 1);
   }
-  @media (min-width: 768px) {
 
-  }
   @media (min-width: 1024px) {
     .sidebar-icon {
       font-size: 24px;

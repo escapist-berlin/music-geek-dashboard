@@ -50,15 +50,20 @@ export default {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 1s ease;
+
+    &.loaded {
+      opacity: 1;
+    }
+
+    @media (min-width: 1024px) {
+      flex-direction: row;
+      height: 100%;
+    }
   }
-  .dashboard-container.loaded {
-    opacity: 1;
-  }
+
   .widgets-container {
-    // border: 5px solid lightcoral;
     display: flex;
     flex-direction: column;
     flex-grow: 999;
@@ -66,20 +71,8 @@ export default {
     justify-content: center;
     align-items: center;
     padding: 0 35px 35px 35px;
-  }
 
-  @media (min-width: 768px) {
-    .widgets-container {
-
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .dashboard-container {
-      flex-direction: row;
-      height: 100%;
-    }
-    .widgets-container {
+    @media (min-width: 1024px) {
       flex-wrap: wrap;
       flex-direction: row;
       overflow: auto;

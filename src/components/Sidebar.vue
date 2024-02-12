@@ -22,14 +22,12 @@ export default {
   .sidebar-container {
     display: flex;
     flex-grow: 1;
-    gap: 40px;
     justify-content: center;
     align-items: center;
     padding: 35px;
+    gap: 40px;
   }
-  @media (min-width: 768px) {
 
-  }
   @media (min-width: 1024px) {
     .sidebar-container {
       flex-direction: column;
