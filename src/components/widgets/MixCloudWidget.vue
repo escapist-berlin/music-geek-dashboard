@@ -1,34 +1,36 @@
 <template>
-  <div v-if="show && comments" class="mixcloud-container">
-    <h1>{{ show.name.toUpperCase() }}</h1>
-    <div class="show-cover-infos">
-      <div>
-        <br>
-        <p>{{ getDescription(show.description) }}</p>
-        <br>
-        <a v-if="show.description.includes('www')" :href="extractUrl(show.description)">
-          <font-awesome-icon icon="fa-solid fa-angles-right" fade />
-          Read more
+  <Transition>
+    <div v-if="show && comments" class="mixcloud-container">
+      <h1>{{ show.name.toUpperCase() }}</h1>
+      <div class="show-cover-infos">
+        <div>
+          <br>
+          <p>{{ getDescription(show.description) }}</p>
+          <br>
+          <a v-if="show.description.includes('www')" :href="extractUrl(show.description)">
+            <font-awesome-icon icon="fa-solid fa-angles-right" fade />
+            Read more
+          </a>
+        </div>
+        <a :href="show.url">
+          <img :src="show.pictures.large" alt="Show Cover" style="width: 90px; height: 90px;">
         </a>
       </div>
-      <a :href="show.url">
-        <img :src="show.pictures.large" alt="Show Cover" style="width: 90px; height: 90px;">
-      </a>
-    </div>
 
-    <div class="show-comments">
-      <h2>Comments ({{ show.comment_count }})</h2>
-      <ul class="comment-list">
-        <li v-for="(comment, index) in comments.data.slice(0, 3)" :key="index" class="comment-item">
-          <img :src="comment.user.pictures.small" alt="Profile Picture" class="profile-picture">
-          <div class="comment-content">
-            <p class="comment-username">{{ comment.user.name }}</p>
-            <p class="comment-text">{{ comment.comment }}</p>
-          </div>
-        </li>
-      </ul>
+      <div class="show-comments">
+        <h2>Comments ({{ show.comment_count }})</h2>
+        <ul class="comment-list">
+          <li v-for="(comment, index) in comments.data.slice(0, 3)" :key="index" class="comment-item">
+            <img :src="comment.user.pictures.small" alt="Profile Picture" class="profile-picture">
+            <div class="comment-content">
+              <p class="comment-username">{{ comment.user.name }}</p>
+              <p class="comment-text">{{ comment.comment }}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </Transition>
 </template>
 
 <script>
@@ -43,6 +45,7 @@ export default {
     try {
       this.show = await this.fetchShowData();
       this.comments = await this.fetchCommentsData();
+      this.$emit('data-loaded');
     } catch (error) {
       console.error(error);
     }
@@ -80,6 +83,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .v-enter-active {
+    transition: opacity 2s ease;
+  }
+  .v-enter-from {
+    opacity: 0;
+  }
   .mixcloud-container {
     display: flex;
     gap: 10px;

@@ -1,15 +1,17 @@
 <template>
-  <div v-if="weather" class="weather-container" :style="{ backgroundImage: `url(/${weatherData.image})` }">
-    <div class="overlay">
-      <h1>Berlin</h1>
-      <font-awesome-icon :icon="weatherData.icon" v-bind="weatherData.animation" style="--fa-animation-duration: 2s;" />
-      <p>{{ weather.current.temperature_2m }}{{ weather.current_units.temperature_2m }}</p>
-      <p>{{ cloudCoverDescription }}</p>
+  <Transition>
+    <div v-if="weather" class="weather-container" :style="{ backgroundImage: `url(/${weatherData.image})` }">
+      <div class="overlay">
+        <h1>Berlin</h1>
+        <font-awesome-icon :icon="weatherData.icon" v-bind="weatherData.animation" style="--fa-animation-duration: 2s;" />
+        <p>{{ weather.current.temperature_2m }}{{ weather.current_units.temperature_2m }}</p>
+        <p>{{ cloudCoverDescription }}</p>
+      </div>
+      <!-- <p>Rain: {{ weather.current.rain }}{{ weather.current_units.rain }}</p>
+      <p>Wind Speed: {{ weather.current.wind_speed_10m }}{{ weather.current_units.wind_speed_10m }}</p>
+      <p>Wind Direction: {{ weather.current.wind_direction_10m }}{{ weather.current_units.wind_direction_10m }}</p> -->
     </div>
-    <!-- <p>Rain: {{ weather.current.rain }}{{ weather.current_units.rain }}</p>
-    <p>Wind Speed: {{ weather.current.wind_speed_10m }}{{ weather.current_units.wind_speed_10m }}</p>
-    <p>Wind Direction: {{ weather.current.wind_direction_10m }}{{ weather.current_units.wind_direction_10m }}</p> -->
-  </div>
+  </Transition>
 </template>
 
 <script>
@@ -22,6 +24,7 @@ export default {
   async mounted() {
     try {
       this.weather = await this.fetchWeatherData();
+      this.$emit('data-loaded');
     } catch (error) {
       console.error(error);
     }
@@ -80,6 +83,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .v-enter-active {
+    transition: opacity 2s ease;
+  }
+  .v-enter-from {
+    opacity: 0;
+  }
   .weather-container {
     position: relative;
 
@@ -131,8 +140,6 @@ export default {
     }
   }
   @media (min-width: 1024px) {
-    .weather-container {
 
-    }
   }
 </style>

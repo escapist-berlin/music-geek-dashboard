@@ -1,10 +1,10 @@
 <template>
-  <div class="dashboard-container">
+  <div class="dashboard-container" :class="{ loaded }">
     <Sidebar />
     <div class="widgets-container">
-      <WeatherWidget />
-      <DiscogsWidget />
-      <MixCloudWidget />
+      <WeatherWidget ref="weatherWidget" @data-loaded="checkAllDataLoaded"/>
+      <DiscogsWidget ref="discogsWidget" @data-loaded="checkAllDataLoaded"/>
+      <MixCloudWidget ref="mixcloudWidget" @data-loaded="checkAllDataLoaded"/>
     </div>
   </div>
 </template>
@@ -21,7 +21,24 @@ export default {
     WeatherWidget,
     DiscogsWidget,
     MixCloudWidget,
-  }
+  },
+  data() {
+    return {
+      loaded: false,
+    }
+  },
+  methods: {
+    checkAllDataLoaded() {
+      if (
+        this.$refs.weatherWidget.weather &&
+        this.$refs.discogsWidget.release &&
+        this.$refs.mixcloudWidget.show &&
+        this.$refs.mixcloudWidget.comments
+      ) {
+        this.loaded = true;
+      }
+    }
+  },
 }
 </script>
 
@@ -33,9 +50,15 @@ export default {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .dashboard-container.loaded {
+    opacity: 1;
   }
   .widgets-container {
-    border: 5px solid lightcoral;
+    // border: 5px solid lightcoral;
     display: flex;
     flex-direction: column;
     flex-grow: 999;

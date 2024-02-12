@@ -1,27 +1,29 @@
 <template>
-  <div v-if="release" class="discogs-container">
-    <h1>NEXT RECORD TO DISCOVER</h1>
-    <div class="release-cover-infos">
-      <a :href="release.uri">
-        <img src="/release_cover.jpg" alt="Release Cover" style="width: 90px; height: 90px;">
-      </a>
-      <div>
-        <p>{{ displayArtists }} - {{ release.title }}</p>
-        <p>{{ displayLabels }}</p>
-        <p>{{ release.country }} - {{ release.released }}</p>
-        <p>{{ release.styles.join(', ') }}</p>
+  <Transition>
+    <div v-if="release" class="discogs-container">
+      <h1>NEXT RECORD TO DISCOVER</h1>
+      <div class="release-cover-infos">
+        <a :href="release.uri">
+          <img src="/release_cover.jpg" alt="Release Cover" style="width: 90px; height: 90px;">
+        </a>
+        <div>
+          <p>{{ displayArtists }} - {{ release.title }}</p>
+          <p>{{ displayLabels }}</p>
+          <p>{{ release.country }} - {{ release.released }}</p>
+          <p>{{ release.styles.join(', ') }}</p>
+        </div>
       </div>
-    </div>
 
-    <div class="release-tracklist">
-      <ul>
-        <li v-for="(formattedTrack, index) in formattedTracklist" :key="index">{{ formattedTrack }}</li>
-      </ul>
-      <font-awesome-icon icon="fa-solid fa-compact-disc" />
-    </div>
+      <div class="release-tracklist">
+        <ul>
+          <li v-for="(formattedTrack, index) in formattedTracklist" :key="index">{{ formattedTrack }}</li>
+        </ul>
+        <font-awesome-icon icon="fa-solid fa-compact-disc" />
+      </div>
 
-    <p>Have: {{ release.community.have }} / Want: {{ release.community.want }} / {{ release.lowest_price }} €</p>
-  </div>
+      <p>Have: {{ release.community.have }} / Want: {{ release.community.want }} / {{ release.lowest_price }} €</p>
+    </div>
+  </Transition>
 </template>
 
 <script>
@@ -52,6 +54,7 @@ export default {
   async mounted() {
     try {
       this.release = await this.fetchReleaseData();
+      this.$emit('data-loaded');
     } catch (error) {
       console.error(error);
     }
@@ -70,6 +73,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .v-enter-active {
+    transition: opacity 2s ease;
+  }
+  .v-enter-from {
+    opacity: 0;
+  }
   .discogs-container {
     display: flex;
     gap: 10px;
@@ -117,7 +126,9 @@ export default {
   }
 
   @media (min-width: 768px) {
-
+    .discogs-container {
+      // flex-basis: 50%;
+    }
   }
   @media (min-width: 1024px) {
 
