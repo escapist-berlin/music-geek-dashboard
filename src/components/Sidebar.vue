@@ -12,6 +12,7 @@
 import SidebarButton from '@/components/SidebarButton.vue';
 
 export default {
+  name: 'Sidebar',
   components: {
     SidebarButton
   }

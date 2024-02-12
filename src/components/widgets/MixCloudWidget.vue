@@ -4,27 +4,44 @@
       <h1>{{ show.name.toUpperCase() }}</h1>
       <div class="show-cover-infos">
         <div>
-          <br>
           <p>{{ getDescription(show.description) }}</p>
           <br>
-          <a v-if="show.description.includes('www')" :href="extractUrl(show.description)">
+          <a
+            v-if="show.description.includes('www')"
+            :href="extractUrl(show.description)"
+            >
             <font-awesome-icon icon="fa-solid fa-angles-right" fade />
             Read more
           </a>
         </div>
         <a :href="show.url">
-          <img :src="show.pictures.large" alt="Show Cover" style="width: 90px; height: 90px;">
+          <img
+            :src="show.pictures.large"
+            alt="Show Cover"
+            style="width: 90px; height: 90px;"
+            >
         </a>
       </div>
-
       <div class="show-comments">
         <h2>Comments ({{ show.comment_count }})</h2>
         <ul class="comment-list">
-          <li v-for="(comment, index) in comments.data.slice(0, 3)" :key="index" class="comment-item">
-            <img :src="comment.user.pictures.small" alt="Profile Picture" class="profile-picture">
+          <li
+            v-for="(comment, index) in comments.data.slice(0, 3)"
+            :key="index"
+            class="comment-item"
+            >
+            <img
+              :src="comment.user.pictures.small"
+              alt="Profile Picture"
+              class="profile-picture"
+              >
             <div class="comment-content">
-              <p class="comment-username">{{ comment.user.name }}</p>
-              <p class="comment-text">{{ comment.comment }}</p>
+              <p class="comment-username">
+                {{ comment.user.name }}
+              </p>
+              <p class="comment-text">
+                {{ comment.comment }}
+              </p>
             </div>
           </li>
         </ul>
@@ -35,6 +52,7 @@
 
 <script>
 export default {
+  name: 'MixCloudWidget',
   data() {
     return {
       show: null,

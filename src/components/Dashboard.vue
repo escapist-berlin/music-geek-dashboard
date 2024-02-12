@@ -16,6 +16,7 @@ import DiscogsWidget from "../components/widgets/DiscogsWidget.vue";
 import MixCloudWidget from "../components/widgets/MixCloudWidget.vue";
 
 export default {
+  name: 'Dashboard',
   components: {
     Sidebar,
     WeatherWidget,

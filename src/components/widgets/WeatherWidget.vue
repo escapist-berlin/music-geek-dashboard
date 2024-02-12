@@ -1,10 +1,20 @@
 <template>
   <Transition>
-    <div v-if="weather" class="weather-container" :style="{ backgroundImage: `url(/${weatherData.image})` }">
+    <div
+      v-if="weather"
+      class="weather-container"
+      :style="{ backgroundImage: `url(/${weatherData.image})` }"
+      >
       <div class="overlay">
         <h1>Berlin</h1>
-        <font-awesome-icon :icon="weatherData.icon" v-bind="weatherData.animation" style="--fa-animation-duration: 2s;" />
-        <p>{{ weather.current.temperature_2m }}{{ weather.current_units.temperature_2m }}</p>
+        <font-awesome-icon
+          :icon="weatherData.icon"
+          v-bind="weatherData.animation"
+          style="--fa-animation-duration: 2s;"
+        />
+        <p>
+          {{ weather.current.temperature_2m }}{{ weather.current_units.temperature_2m }}
+        </p>
         <p>{{ cloudCoverDescription }}</p>
       </div>
     </div>
@@ -13,6 +23,7 @@
 
 <script>
 export default {
+  name: 'WeatherWidget',
   data() {
     return {
       weather: null,

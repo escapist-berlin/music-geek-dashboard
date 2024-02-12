@@ -4,7 +4,11 @@
       <h1>NEXT RECORD TO DISCOVER</h1>
       <div class="release-cover-infos">
         <a :href="release.uri">
-          <img src="/release_cover.jpg" alt="Release Cover" style="width: 90px; height: 90px;">
+          <img
+            src="/release_cover.jpg"
+            alt="Release Cover"
+            style="width: 90px; height: 90px;"
+            >
         </a>
         <div>
           <p>{{ displayArtists }} - {{ release.title }}</p>
@@ -13,21 +17,27 @@
           <p>{{ release.styles.join(', ') }}</p>
         </div>
       </div>
-
       <div class="release-tracklist">
         <ul>
-          <li v-for="(formattedTrack, index) in formattedTracklist" :key="index">{{ formattedTrack }}</li>
+          <li
+            v-for="(formattedTrack, index) in formattedTracklist"
+            :key="index"
+            >
+            {{ formattedTrack }}
+          </li>
         </ul>
         <font-awesome-icon icon="fa-solid fa-compact-disc" />
       </div>
-
-      <p>Have: {{ release.community.have }} / Want: {{ release.community.want }} / {{ release.lowest_price }} €</p>
+      <p>
+        Have: {{ release.community.have }} / Want: {{ release.community.want }} / {{ release.lowest_price }} €
+      </p>
     </div>
   </Transition>
 </template>
 
 <script>
 export default {
+  name: 'DiscogsWidget',
   data() {
     return {
       release: null,
