@@ -65,7 +65,7 @@ export default {
     gap: 30px;
     justify-content: center;
     align-items: center;
-    padding: 35px;
+    padding: 0 35px 35px 35px;
   }
 
   @media (min-width: 768px) {
@@ -83,6 +83,7 @@ export default {
       flex-wrap: wrap;
       flex-direction: row;
       overflow: auto;
+      padding: 35px 35px 35px 0;
     }
   }
 </style>
