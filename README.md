@@ -2,6 +2,10 @@
 
 Welcome to the 'Music Geek Dashboard' project! This dashboard is designed specifically for DJs, vinyl record collectors, and electronic music enthusiasts.
 
+# Live Deployment
+
+You can access the live deployment of the Music Geek Dashboard [here](https://music-geek-dashboard.vercel.app/).
+
 ## Overview
 
 The 'Music Geek Dashboard' comprises three widgets, each serving a unique purpose and fetching data from external APIs:
